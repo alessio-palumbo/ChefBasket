@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Business name:</strong>
+  <%= @food_business.business_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @food_business.address %>
+</p>
+
+<p>
+  <strong>Abn number:</strong>
+  <%= @food_business.abn_number %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @food_business.contact_number %>
+</p>
+
+<p>
+  <strong>Business category:</strong>
+  <%= @food_business.business_category %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @food_business.user %>
+</p>
+
+<%= link_to 'Edit', edit_food_business_path(@food_business) %> |
+<%= link_to 'Back', food_businesses_path %>

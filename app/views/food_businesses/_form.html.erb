@@ -1,0 +1,47 @@
+<%= form_with(model: food_business, local: true) do |form| %>
+  <% if food_business.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(food_business.errors.count, "error") %> prohibited this food_business from being saved:</h2>
+
+      <ul>
+      <% food_business.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :business_name %>
+    <%= form.text_field :business_name, id: :food_business_business_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :food_business_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :abn_number %>
+    <%= form.text_field :abn_number, id: :food_business_abn_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contact_number %>
+    <%= form.text_field :contact_number, id: :food_business_contact_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :business_category %>
+    <%= form.text_field :business_category, id: :food_business_business_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id, id: :food_business_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

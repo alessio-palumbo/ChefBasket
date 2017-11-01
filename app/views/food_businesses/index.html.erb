@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Food Businesses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Business name</th>
+      <th>Address</th>
+      <th>Abn number</th>
+      <th>Contact number</th>
+      <th>Business category</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @food_businesses.each do |food_business| %>
+      <tr>
+        <td><%= food_business.business_name %></td>
+        <td><%= food_business.address %></td>
+        <td><%= food_business.abn_number %></td>
+        <td><%= food_business.contact_number %></td>
+        <td><%= food_business.business_category %></td>
+        <td><%= food_business.user %></td>
+        <td><%= link_to 'Show', food_business %></td>
+        <td><%= link_to 'Edit', edit_food_business_path(food_business) %></td>
+        <td><%= link_to 'Destroy', food_business, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Food Business', new_food_business_path %>

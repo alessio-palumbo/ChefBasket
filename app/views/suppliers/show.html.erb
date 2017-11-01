@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Business name:</strong>
+  <%= @supplier.business_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @supplier.address %>
+</p>
+
+<p>
+  <strong>Abn number:</strong>
+  <%= @supplier.abn_number %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @supplier.contact_number %>
+</p>
+
+<p>
+  <strong>Supplier type:</strong>
+  <%= @supplier.supplier_type %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @supplier.user %>
+</p>
+
+<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
+<%= link_to 'Back', suppliers_path %>
