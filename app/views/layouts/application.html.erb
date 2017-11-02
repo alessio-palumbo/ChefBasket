@@ -3,20 +3,17 @@
   <head>
     <title>ChefBasket</title>
     <%= csrf_meta_tags %>
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div class="container">
-    <%= render 'layouts/navbar'%>
+      <%= render 'layouts/navbar'%>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-
-    <%= yield %>
+      <%= yield %>
+      <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
     </div>
   </body>
 </html>

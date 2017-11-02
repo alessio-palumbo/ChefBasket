@@ -1,0 +1,50 @@
+.field-input, .button {
+  width: 280px;
+  height: 50px;
+  outline: none;
+  margin: 10px 0;
+}
+.field-input {
+  border-radius: 10px;
+  border: 2px solid $primary;
+  padding-left: 10px;
+  color: $darkgray;
+}
+.field-input:hover, .field-input:focus {
+  border: 3px solid $primary;
+  color: black;
+}
+.button {
+  border-radius: 20px;
+  border: none;
+  background: $primary;
+  color: white;
+}
+.button:hover, .button:focus {
+  background-color: $lightprimary;
+}
+.select {
+  background: $gray;
+  appearance: none; 
+}
+.select:focus > div {
+  background: $gray;
+  border: none;
+}
+.checkbox {
+  border-radius: 50%;
+}
+.checkbox-label {
+  font-size: 16px;
+}
+.forgot-pass {
+  font-size: 14px;
+  color: $primary;
+}
+.link-text {
+  font-size: 18px;
+  text-align: center;
+}
+.link {
+  color: $primary;
+}

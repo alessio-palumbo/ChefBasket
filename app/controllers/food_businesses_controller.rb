@@ -2,30 +2,23 @@ class FoodBusinessesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_food_business, only: [:show, :edit, :update, :destroy]
 
-  # GET /food_businesses
-  # GET /food_businesses.json
   def index
     @food_businesses = FoodBusiness.all
   end
 
-  # GET /food_businesses/1
-  # GET /food_businesses/1.json
   def show
   end
 
-  # GET /food_businesses/new
   def new
     @food_business = FoodBusiness.new
   end
-
-  # GET /food_businesses/1/edit
+  
   def edit
   end
-
-  # POST /food_businesses
-  # POST /food_businesses.json
+  
   def create
     @food_business = FoodBusiness.new(food_business_params)
+    @food_business.user = current_user
 
     respond_to do |format|
       if @food_business.save
@@ -38,8 +31,6 @@ class FoodBusinessesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /food_businesses/1
-  # PATCH/PUT /food_businesses/1.json
   def update
     respond_to do |format|
       if @food_business.update(food_business_params)
@@ -52,8 +43,6 @@ class FoodBusinessesController < ApplicationController
     end
   end
 
-  # DELETE /food_businesses/1
-  # DELETE /food_businesses/1.json
   def destroy
     @food_business.destroy
     respond_to do |format|
@@ -63,12 +52,11 @@ class FoodBusinessesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+  
     def set_food_business
       @food_business = FoodBusiness.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def food_business_params
       params.require(:food_business).permit(:business_name, :address, :abn_number, :contact_number, :business_category, :user_id)
     end

@@ -1,26 +1,27 @@
-<h2>Log in</h2>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+  <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: 'field-input' %>
+  <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'field-input' %>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="field text-center">
+      <%= f.check_box :remember_me, class: "checkbox" %>
+      <%= f.label :remember_me, class: "checkbox-label" %>
     </div>
   <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
+
+  <%= f.submit "Log in", class: 'button' %>
 <% end %>
 
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <div class="field text-center">
+      <%= link_to "Forgot your password?", new_password_path(resource_name), class: "forgot-pass" %><br />
+    </div>
+  <% end -%>
+
+<hr>
+
 <%= render "users/shared/links" %>
+
+

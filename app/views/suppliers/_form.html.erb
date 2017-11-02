@@ -11,37 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :business_name %>
-    <%= form.text_field :business_name, id: :supplier_business_name %>
-  </div>
+  <%= form.text_field :business_name, placeholder: 'Business name', autofocus: true, class: 'field-input' %>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address, id: :supplier_address %>
-  </div>
+  <%= form.text_field :address, placeholder: 'Address', class: 'field-input' %>
 
-  <div class="field">
-    <%= form.label :abn_number %>
-    <%= form.text_field :abn_number, id: :supplier_abn_number %>
-  </div>
+  <%= form.text_field :abn_number, placeholder: 'ABN', class: 'field-input' %>
 
-  <div class="field">
-    <%= form.label :contact_number %>
-    <%= form.text_field :contact_number, id: :supplier_contact_number %>
-  </div>
+  <%= form.text_field :contact_number, placeholder: 'Contact number', class: 'field-input' %>
 
-  <div class="field">
-    <%= form.label :supplier_type %>
-    <%= form.text_field :supplier_type, id: :supplier_supplier_type %>
-  </div>
+  <%= form.select :supplier_type, ['Vegetables', 'Meat', 'Fish', 'Dry Goods', 'Dairy', 'Drinks', 'Baked Goods/Pastry'], {prompt: 'Select category'}, {class: 'field-input select' } %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :supplier_user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit 'Create Profile', class: 'button' %>
 <% end %>
