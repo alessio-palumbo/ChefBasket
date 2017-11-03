@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20171101063723) do
     t.string "abn_number"
     t.string "contact_number"
     t.string "business_category"
+    t.string "email"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 20171101063723) do
     t.string "abn_number"
     t.string "contact_number"
     t.string "supplier_type"
+    t.string "email"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

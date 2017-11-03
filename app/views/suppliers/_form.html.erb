@@ -11,13 +11,13 @@
     </div>
   <% end %>
 
-  <%= form.text_field :business_name, placeholder: 'Business name', autofocus: true, class: 'field-input' %>
-
-  <%= form.text_field :address, placeholder: 'Address', class: 'field-input' %>
-
-  <%= form.text_field :abn_number, placeholder: 'ABN', class: 'field-input' %>
+  <%= form.text_field :address, placeholder: 'Address', autofocus: true, class: 'field-input' %>
 
   <%= form.text_field :contact_number, placeholder: 'Contact number', class: 'field-input' %>
+
+  <%= form.text_field :email, placeholder: 'Email', class: 'field-input' %>
+
+  <%= form.text_field :abn_number, placeholder: 'ABN', class: 'field-input' %>
 
   <%= form.select :supplier_type, ['Vegetables', 'Meat', 'Fish', 'Dry Goods', 'Dairy', 'Drinks', 'Baked Goods/Pastry'], {prompt: 'Select category'}, {class: 'field-input select' } %>
 

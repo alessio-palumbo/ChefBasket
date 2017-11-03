@@ -1,0 +1,50 @@
+.navigation {
+  height: 80px;
+  padding: 15px 10px;
+  margin-bottom: 20px;
+  .app-name {
+    color: $primary;
+    font-size: 36px;
+    font-family: 'Kaushan Script', cursive;
+  }
+  .hamburger {
+    font-size: 36px;
+    color: $primary;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    z-index: 21;
+  }
+  .dashboard {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s;
+    list-style: none;
+    height: 100vh;
+    width: 320px;
+    background: $lightprimary;
+    padding: 100px 30px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 20;
+    li {
+      border-bottom: 1px solid black;
+      height: 50px;
+      padding-top: 20px;
+      vertical-align: middle;
+      a {
+        color: black;
+      }
+    }
+  }
+  .hamburger:focus {
+    color: black;
+    pointer-events: none;
+  }
+  .hamburger:focus + .dashboard {
+    visibility: visible;
+    opacity: 1;
+  }
+}

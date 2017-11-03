@@ -2,20 +2,19 @@
 
 <br>
 
-<% @food_businesses.each do |food_business| %>
-  <div class="d-flex justify-content-between">
-    <p><%= food_business.business_name %></p>
-    <div>
-      <%= link_to food_business, class: 'link' do %>
-        <%= fa_icon "address-card" %>
-      <% end %>
-      <%= link_to food_business, class: 'link' do %>
-        <%= fa_icon "sign-in" %>
-      <% end %>      
+<% current_user.food_businesses.each do |food_business| %>
+  <%= link_to food_business do %>
+    <div class="list-item d-flex justify-content-between">
+      <p><%= food_business.business_name %></p>
+      <p>
+        <%= link_to home_url(food_business), class: 'link' do %>
+          <%= fa_icon "sign-in" %>
+        <% end %>  
+      </p>  
     </div>
-  </div>
+  <% end %>
 <% end %>
 
 <br>
 
-<%= link_to 'New Food Business', new_food_business_path, class: 'btn button' %>
+<%= render 'menu_index' %>

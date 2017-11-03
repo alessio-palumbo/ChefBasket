@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">        
     <title>ChefBasket</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Roboto:400,700" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,7 +15,7 @@
       <%= render 'layouts/navbar'%>
 
       <%= yield %>
-      <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+      <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'logout' %>
     </div>
   </body>
 </html>

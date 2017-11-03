@@ -3,36 +3,82 @@ $gray: #f2f2f2;
 $lightprimary: #96C11F;
 $darkgray: #828282;
 
+$font-large: 20px;
+$font-normal: 18px;
+$font-small: 16px;
+
+@import 'font-awesome';
 @import 'bootstrap';
+@import 'navbar';
+@import 'home';
+@import 'forms';
 @import 'food_businesses';
 @import 'suppliers';
-@import 'font-awesome';
-@import 'forms';
 
+// general
 html {
   font-family: 'Roboto', sans-serif;
 }
 body {
   margin: 0 auto;
+  font-size: $font-normal;
 }
 .container {
+  // text-align: center;
   width: 300px;
   margin: 0 auto;
+  padding: 0;
+}
+a:hover {
+  text-decoration: none;
 }
 
-.navigation {
-  height: 80px;
-  padding: 10px;
-  margin-bottom: 20px;
-  .app-name {
-    color: $primary;
-    font-size: 46px;
+.back-arrow {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  z-index: 10;
+}
+.logout {
+  position: absolute;
+  left: 10px;
+  top: 40px;
+  z-index: 10;
+}
+// keypad
+.menu-box {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-top: 3px solid white;
+  // .middle-key {
+  //   border-right: 1px solid #BDBDBD;
+  //   border-left: 1px solid #BDBDBD;
+  // }
+  .menu-key {
+    background: $gray;
+    vertical-align: top;
+    text-align: center;
+    margin-bottom: 4px;
+    height: 80px;
+    width: 32%;
+    display: inline-block;
+    font-size: 32px;
+    border: 1px solid #bdbdbd;
+    .key-title {
+      text-transform: uppercase;
+      font-size: 12px;
+      line-height: 12px;
+    }
   }
-  .hamburger {
-    font-size: 36px;
-    color: $primary;
-    position: absolute;
-    top: 20px;
-    right: 15px;
+}
+
+
+
+
+@media screen and (min-width: 400px) {
+  .menu-box {
+    position: relative;
   }
 }

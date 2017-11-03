@@ -1,22 +1,25 @@
-<p class="text-center"><%= current_user.company_name %></p>
+<p class="text-center heading-lg"><%= current_user.company_name %></p>
 
-<p class="text-center"><strong><%= @food_business.business_name %></strong></p>
+<p class="text-center heading-lg"><strong><%= @food_business.business_name %></strong></p>
 
 <div class="info-box">
+  <p><%= fa_icon "briefcase", class: 'link info' %> <%= @food_business.business_category %></p>
+  <p><%= fa_icon "map-marker", class: 'link info' %> <%= @food_business.address %></p>
+  <p><%= fa_icon "phone", class: 'link info' %> <%= @food_business.contact_number %></p>
+  <p><%= fa_icon "envelope", class: 'link info' %> <%= @food_business.email %></p>
+  <p><span class="link">ABN</span> <%= @food_business.abn_number %></p>
+</div>
+
+<div class="info-box">
+  <p class="text-center box-title">STATS</p>
+  <%# TODO: calculate weekly expenditure %>
+  <p><span class="link">Weekly expenditure:</span> $2500</p>
+  <%# TODO: calculare percentage %>
+  <p><span class="link">Business percentage:</span> 23%</p>
+</div>
+
+<%= render 'menu_show' %>
 
 
-<p><%= fa_icon "briefcase", class: 'link' %><%= @food_business.business_category %></p>
 
-<p><%= fa_icon "map-marker" %><%= @food_business.address %></p>
-
-<p><%= fa_icon "phone" %><%= @food_business.contact_number %></p>
-
-<p><%= fa_icon "envelope" %><%= @food_business.email %></p>
-
-<p>ABN <%= @food_business.abn_number %></p>
-
-
-
-
-<%= link_to 'Edit', edit_food_business_path(@food_business) %> |
-<%= link_to 'Back', food_businesses_path %>
+<%= link_to 'Back', food_businesses_path, class: 'back-arrow' %>

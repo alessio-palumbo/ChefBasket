@@ -1,0 +1,17 @@
+<div class="menu-box">
+  <%= link_to new_supplier_path do %>
+    <div class="menu-key"></div>
+  <% end %>
+  <%= link_to edit_supplier_path(@supplier) do %>
+    <div class="menu-key middle-key">
+      <%= fa_icon "pencil" %>
+      <p class="key-title">Edit</p>
+    </div>
+  <% end %>
+  <%= link_to new_supplier_path do %>
+    <div class="menu-key">
+      <%= fa_icon "area-chart" %>
+      <p class="key-title">Stats</p>
+    </div>
+  <% end %>
+</div>

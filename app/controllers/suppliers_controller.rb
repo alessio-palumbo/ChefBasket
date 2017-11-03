@@ -4,8 +4,8 @@ class SuppliersController < ApplicationController
 
   # GET /suppliers
   # GET /suppliers.json
-  def index
-    @suppliers = Supplier.all
+  def home
+    @supplier = current_user.supplier
   end
 
   # GET /suppliers/1
@@ -26,6 +26,7 @@ class SuppliersController < ApplicationController
   # POST /suppliers.json
   def create
     @supplier = Supplier.new(supplier_params)
+    @supplier.user = current_user
 
     respond_to do |format|
       if @supplier.save
@@ -70,6 +71,6 @@ class SuppliersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supplier_params
-      params.require(:supplier).permit(:business_name, :address, :abn_number, :contact_number, :supplier_type, :user_id)
+      params.require(:supplier).permit(:business_name, :address, :abn_number, :contact_number, :supplier_type, :email)
     end
 end

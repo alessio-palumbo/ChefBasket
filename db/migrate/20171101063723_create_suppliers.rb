@@ -6,6 +6,7 @@ class CreateSuppliers < ActiveRecord::Migration[5.1]
       t.string :abn_number
       t.string :contact_number
       t.string :supplier_type
+      t.string :email
       t.references :user, foreign_key: true
 
       t.timestamps

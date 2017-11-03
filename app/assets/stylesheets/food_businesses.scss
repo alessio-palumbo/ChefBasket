@@ -1,3 +1,30 @@
-// Place all the styles related to the FoodBusinesses controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// index
+.list-item {
+  height: 50px;
+  background-color: $gray;
+  padding: 0 10px;
+  border: 1px solid #e5e5e5;
+  padding-top: 10px;
+}
+// show
+.heading-lg {
+  font-size: $font-large;
+}
+.info-box {
+  background: $gray;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+.info-box p {
+  margin-bottom: 8px;
+}
+.info {
+  width: 20px;
+  text-align: center;
+  margin-right: 10px;
+}
+.box-title {
+  font-size: $font-small;
+  font-weight: bold;
+}

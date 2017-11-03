@@ -1,4 +1,16 @@
 <nav class="navigation">
   <h1 class="app-name text-center">ChefBasket</h1>
-  <%= fa_icon "bars", class: "hamburger"%>
+  <a href="#" class="hamburger"><%= fa_icon "bars"%></a>
+  <div class="dashboard">
+    <%# TODO: redirect to home as a restaurant %>
+    <% if current_user.user_type == 'Food Business' && !@food_business.nil? %>
+      <li><%= link_to 'Home', food_businesses_url %></li>
+    <% elsif current_user.user_type == 'Supplier' && !@supplier.nil? %>
+      <li><%= link_to 'Home', home_url %></li>
+    <% end %>
+    <li><%= link_to 'Payment Info' %></li>
+    <li><%= link_to 'Terms & Conditions' %></li>
+    <li><%= link_to 'Contact' %></li>
+    <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+  </div>
 </nav>
