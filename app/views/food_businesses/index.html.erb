@@ -7,7 +7,7 @@
     <div class="list-item d-flex justify-content-between">
       <p><%= food_business.business_name %></p>
       <p>
-        <%= link_to home_url(food_business), class: 'link' do %>
+        <%= link_to food_business_home_url(food_business), class: 'link' do %>
           <%= fa_icon "sign-in" %>
         <% end %>  
       </p>  

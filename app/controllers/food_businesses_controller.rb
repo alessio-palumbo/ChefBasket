@@ -32,6 +32,20 @@ class FoodBusinessesController < ApplicationController
   end
 
   def update
+    if params[:supplier] 
+      @supplier = Supplier.find(params[:supplier])
+      if @food_business.suppliers.include? @supplier
+        @food_business.suppliers.delete(@supplier)
+      else 
+        @food_business.suppliers << @supplier
+      end
+      redirect_to request.referrer
+      # respond_to do |format|
+      #     format.js {render inline: "window.location.reload();" }
+      # end
+      # redirect_to suppliers_path(food_business: @food_business) and return
+
+    end
     respond_to do |format|
       if @food_business.update(food_business_params)
         format.html { redirect_to @food_business, notice: 'Food business was successfully updated.' }

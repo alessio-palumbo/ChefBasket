@@ -5,7 +5,7 @@
       <p class="key-title">New order</p>
     </div>
   <% end %>
-  <%= link_to edit_food_business_path(@food_business) do %>
+  <%= link_to suppliers_path(food_business: @food_business) do %>
     <div class="menu-key middle-key">
       <%= fa_icon "users" %>
       <p class="key-title">My Suppliers</p>

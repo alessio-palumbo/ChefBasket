@@ -2,31 +2,36 @@ class SuppliersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
 
-  # GET /suppliers
-  # GET /suppliers.json
   def home
     @supplier = current_user.supplier
   end
 
-  # GET /suppliers/1
-  # GET /suppliers/1.json
+  def index
+    @food_business = FoodBusiness.find(params[:food_business])
+
+    if params[:search]
+      @my_suppliers = @food_business.suppliers.search(params[:search])
+      @suppliers = Supplier.search(params[:search]) - @my_suppliers
+    else
+      @my_suppliers = @food_business.suppliers
+      @suppliers = Supplier.all - @my_suppliers
+    end
+  end
+
   def show
   end
 
-  # GET /suppliers/new
   def new
     @supplier = Supplier.new
   end
 
-  # GET /suppliers/1/edit
   def edit
   end
 
-  # POST /suppliers
-  # POST /suppliers.json
   def create
     @supplier = Supplier.new(supplier_params)
     @supplier.user = current_user
+    @supplier.business_name = current_user.company_name
 
     respond_to do |format|
       if @supplier.save
@@ -39,8 +44,6 @@ class SuppliersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /suppliers/1
-  # PATCH/PUT /suppliers/1.json
   def update
     respond_to do |format|
       if @supplier.update(supplier_params)
@@ -53,8 +56,6 @@ class SuppliersController < ApplicationController
     end
   end
 
-  # DELETE /suppliers/1
-  # DELETE /suppliers/1.json
   def destroy
     @supplier.destroy
     respond_to do |format|
@@ -73,4 +74,5 @@ class SuppliersController < ApplicationController
     def supplier_params
       params.require(:supplier).permit(:business_name, :address, :abn_number, :contact_number, :supplier_type, :email)
     end
+
 end

@@ -1,19 +1,19 @@
 <p class="text-center heading-lg"><%= current_user.company_name %></p>
 
 <div class="info-box">
-  <p><%= fa_icon "briefcase", class: 'link info' %> <%= @supplier.supplier_type %></p>
-  <p><%= fa_icon "map-marker", class: 'link info' %> <%= @supplier.address %></p>
-  <p><%= fa_icon "phone", class: 'link info' %> <%= @supplier.contact_number %></p>
-  <p><%= fa_icon "envelope", class: 'link info' %> <%= @supplier.email %></p>
-  <p><span class="link">ABN</span> <%= @supplier.abn_number %></p>
+  <p><%= fa_icon "briefcase", class: 'data-title info' %> <%= @supplier.supplier_type %></p>
+  <p><%= fa_icon "map-marker", class: 'data-title info' %> <%= @supplier.address %></p>
+  <p><%= fa_icon "phone", class: 'data-title info' %> <%= @supplier.contact_number %></p>
+  <p><%= fa_icon "envelope", class: 'data-title info' %> <%= @supplier.email %></p>
+  <p><span class="data-title">ABN</span> <%= @supplier.abn_number %></p>
 </div>
 
 <div class="info-box">
   <p class="text-center box-title">STATS</p>
   <%# TODO: calculate weekly expenditure %>
-  <p><span class="link">Market share:</span> 19%</p>
+  <p><span class="data-title">Market share:</span> 19%</p>
   <%# TODO: calculare percentage %>
-  <p><span class="link">Member sincw:</span> 10/01/2011</p>
+  <p><span class="data-title">Member since:</span> 10/01/2011</p>
 </div>
 
 <%= render 'menu_show' %>

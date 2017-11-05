@@ -1,0 +1,59 @@
+<p class="home-title"><%= @food_business.business_name %></p>
+
+<div class="search-bar">
+  <%= form_tag(@supplier, method: "get", class: 'd-flex') do %>
+    <%= hidden_field_tag :food_business, @food_business.id %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search supplier", class: 'field-input search-input' %>
+    <%#= select_tag (:supplier_type, ['Vegetables', 'Meat', 'Fish', 'Dry Goods', 'Dairy', 'Drinks', 'Baked Goods/Pastry'], {prompt: 'Select category'}, {class: 'field-input select' }) %>
+    <%= submit_tag "Search", class: 'button' %>
+  <% end %>
+</div>
+
+<% if params[:search] %>
+  <p><strong><%= pluralize (@my_suppliers.count + @suppliers.count), 'result' %> found</strong>
+    <%= link_to 'Clear', suppliers_path(food_business: @food_business), class: 'link-signin'%>
+  </p>
+<% end %>
+
+<p class="supplier-list">My Suppliers</p>
+<% if @food_business && @food_business.suppliers.count > 0 %>
+  <% @my_suppliers.each do |supplier| %>
+    <%= link_to supplier do %>
+      <div class="list-item d-flex justify-content-between">
+        <p><%= supplier.business_name %></p>
+        <%= form_with model: @food_business do |f| %>
+          <%= link_to supplier, class: 'link' do %>
+            <%= fa_icon "comments" %>
+          <% end %>
+          <%= hidden_field_tag :supplier, supplier.id %>
+          <%= f.button class: 'link form-btn', onclick:"window.location.reload();" do %>
+            <%= fa_icon "minus-circle", class: 'text-danger' %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <p class="list-item">Your list is empty</p>
+<% end %>
+
+<p class="supplier-list">Suppliers</p>
+<% @suppliers.each do |supplier| %>
+  <%= link_to supplier do %>
+    <div class="list-item d-flex justify-content-between">
+      <p><%= supplier.business_name %></p>
+      <%= form_with model: @food_business do |f| %>
+        <%= link_to supplier, class: 'link' do %>
+          <%= fa_icon "phone-square" %>
+        <% end %>
+        <%= hidden_field_tag :supplier, supplier.id %>
+        <%= f.button class: 'link form-btn', onclick:"window.location.reload();" do %>
+          <%= fa_icon "plus-square"%>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= render 'menu_index'%>
+

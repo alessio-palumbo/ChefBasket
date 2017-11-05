@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :food_businesses
-  get 'food_businesses/:id/home' => 'food_businesses#home', as: 'home'
+  get 'food_businesses/:id/home' => 'food_businesses#home', as: 'food_business_home'
   resources :suppliers
   get 'home' => 'suppliers#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

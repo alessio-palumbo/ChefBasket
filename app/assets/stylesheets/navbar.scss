@@ -1,18 +1,22 @@
 .navigation {
   height: 80px;
-  padding: 15px 10px;
+  padding: 20px 5px;
   margin-bottom: 20px;
+  vertical-align: top;
+  font-size: $font-xl;
+  .backarrow {
+  }
   .app-name {
+    font-size: $font-xl;
     color: $primary;
-    font-size: 36px;
     font-family: 'Kaushan Script', cursive;
+    padding-top: 6px;
   }
   .hamburger {
-    font-size: 36px;
     color: $primary;
-    position: absolute;
-    top: 20px;
-    right: 15px;
+    // position: absolute;
+    // top: 20px;
+    // right: 15px;
     z-index: 21;
   }
   .dashboard {
@@ -34,6 +38,7 @@
       height: 50px;
       padding-top: 20px;
       vertical-align: middle;
+      font-size: $font-normal;
       a {
         color: black;
       }

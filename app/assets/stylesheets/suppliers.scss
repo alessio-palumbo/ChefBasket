@@ -1,3 +1,26 @@
-// Place all the styles related to the Suppliers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+form {
+  margin: 0;
+  padding: 0;
+  display: inline;
+  .form-btn {
+    border: none;
+    background: none;
+    line-height: 1px;
+    padding: 0;
+    outline: none;
+  }
+  .form-btn:hover {
+    cursor: pointer;
+  }
+}
+.supplier-list {
+  font-weight: bold;
+  font-size: $font-small;
+  text-decoration: underline;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.search-input {
+  width: 220px;
+  margin-right: 5px;
+}
