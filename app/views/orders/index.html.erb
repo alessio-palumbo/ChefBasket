@@ -1,0 +1,37 @@
+<p class='text-center'><%= @food_business.business_name %></p>
+
+<p class='list-title'>Orders history</p>
+<% @orders.each do |order| %>
+  <%= link_to order do %>
+    <div class="info-box-orders d-flex justify-content-between">
+      <p><span class="order-title">Delivery Date: </span><%= order.date %></p>
+      <p><span class="order-title">Order n.: </span><%= order.order_number %></p>
+      <p><span class="order-title">To: </span><%= order.supplier.business_name %></p>
+      <p><span class="order-title">Total: </span><%= order.gross_total %></p>
+      <p>
+        <%= link_to class: 'link' do %>
+          <%= fa_icon "print", id: 'signin' %>
+        <% end %>  
+        <%= link_to class: 'link' do %>
+          <%= fa_icon "minus-circle", class: 'text-danger hidden', id: 'delbtn' %>
+        <% end %>
+      </p>  
+    </div>
+  <% end %>
+<% end %>
+
+<br>
+
+<div class="info-box-orders">
+  <p class="text-center box-title">Data</p>
+  <%# TODO: calculate weekly expenditure %>
+  <p><span class="data-title">Weekly total:</span> $1400</p>
+  <%# TODO: calculare percentage %>
+  <p><span class="data-title">Last week:</span> $1300</p>
+  <p><span class="data-title">Budget:</span> $1350</p>
+</div>
+
+
+<br>
+
+<%= render 'menu_index' %>

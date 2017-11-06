@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @order.date %>
+</p>
+
+<p>
+  <strong>Food business:</strong>
+  <%= @order.food_business %>
+</p>
+
+<p>
+  <strong>Supplier:</strong>
+  <%= @order.supplier %>
+</p>
+
+<p>
+  <strong>Gross total:</strong>
+  <%= @order.gross_total %>
+</p>
+
+<p>
+  <strong>Gst:</strong>
+  <%= @order.gst %>
+</p>
+
+<p>
+  <strong>Order number:</strong>
+  <%= @order.order_number %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

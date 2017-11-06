@@ -2,10 +2,10 @@
   <%= link_to do %>
     <div class="menu-key">
       <%= fa_icon "plus" %>
-      <p class="key-title">Add</p>
+      <p class="key-title">New</p>
     </div>
   <% end %>
-  <%= link_to new_food_business_path do %>
+  <%= link_to class:'show-del-btn', remote: true do %>
     <div class="menu-key middle-key">
       <%= fa_icon "minus" %>
       <p class="key-title">Delete</p>

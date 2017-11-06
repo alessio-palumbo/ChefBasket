@@ -1,0 +1,16 @@
+.info-box-orders {
+  background: $gray;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  p {
+    font-size: $font-small;
+    margin: 5px;
+    color: black;
+    .order-title {
+      color: $primary;
+      width: 25%;
+    }
+  }
+}

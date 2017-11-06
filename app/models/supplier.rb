@@ -1,6 +1,7 @@
 class Supplier < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :food_businesses
+  has_many :orders
 
   def self.search(search)
     keyword = search.downcase

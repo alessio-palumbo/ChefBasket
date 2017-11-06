@@ -15,7 +15,7 @@
   </p>
 <% end %>
 
-<p class="supplier-list">My Suppliers</p>
+<p class="list-title">My Suppliers</p>
 <% if @food_business && @food_business.suppliers.count > 0 %>
   <% @my_suppliers.each do |supplier| %>
     <%= link_to supplier do %>
@@ -37,7 +37,7 @@
   <p class="list-item">Your list is empty</p>
 <% end %>
 
-<p class="supplier-list">Suppliers</p>
+<p class="list-title">Suppliers</p>
 <% @suppliers.each do |supplier| %>
   <%= link_to supplier do %>
     <div class="list-item d-flex justify-content-between">

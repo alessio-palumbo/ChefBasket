@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103020108) do
+ActiveRecord::Schema.define(version: 20171106013148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,19 @@ ActiveRecord::Schema.define(version: 20171103020108) do
     t.bigint "supplier_id", null: false
     t.index ["food_business_id", "supplier_id"], name: "idx_food_business_supplier"
     t.index ["supplier_id", "food_business_id"], name: "idx_supplier_food_business"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.date "date"
+    t.bigint "food_business_id"
+    t.bigint "supplier_id"
+    t.decimal "gross_total"
+    t.decimal "gst"
+    t.string "order_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_business_id"], name: "index_orders_on_food_business_id"
+    t.index ["supplier_id"], name: "index_orders_on_supplier_id"
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -68,5 +81,7 @@ ActiveRecord::Schema.define(version: 20171103020108) do
   end
 
   add_foreign_key "food_businesses", "users"
+  add_foreign_key "orders", "food_businesses"
+  add_foreign_key "orders", "suppliers"
   add_foreign_key "suppliers", "users"
 end
