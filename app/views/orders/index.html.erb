@@ -4,9 +4,9 @@
 <% @orders.each do |order| %>
   <%= link_to order do %>
     <div class="info-box-orders d-flex justify-content-between">
-      <p><span class="order-title">Delivery Date: </span><%= order.date %></p>
       <p><span class="order-title">Order n.: </span><%= order.order_number %></p>
       <p><span class="order-title">To: </span><%= order.supplier.business_name %></p>
+      <p><span class="order-title">Delivery Date: </span><%= order.delivery_date %></p>
       <p><span class="order-title">Total: </span><%= order.gross_total %></p>
       <p>
         <%= link_to class: 'link' do %>

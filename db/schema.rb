@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20171106013148) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.date "date"
+    t.date "delivery_date"
     t.bigint "food_business_id"
     t.bigint "supplier_id"
     t.decimal "gross_total"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20171106013148) do
     t.string "order_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_orders_on_created_at"
     t.index ["food_business_id"], name: "index_orders_on_food_business_id"
     t.index ["supplier_id"], name: "index_orders_on_supplier_id"
   end

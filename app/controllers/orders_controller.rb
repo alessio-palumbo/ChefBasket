@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.food_business_id = @food_business.id
 
     respond_to do |format|
       if @order.save
@@ -60,6 +61,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:date, :food_business_id, :supplier_id, :gross_total, :gst, :order_number)
+      params.require(:order).permit(:delivery_date, :supplier_id, :gross_total, :gst, :order_number)
     end
 end
