@@ -6,6 +6,10 @@ class FoodBusinessesController < ApplicationController
     # @food_business = FoodBusiness.find_by(params[:business_name])
   end
 
+  def index
+    @food_businesses = FoodBusiness.where(user: current_user)
+  end
+
   def show
   end
 
@@ -37,7 +41,7 @@ class FoodBusinessesController < ApplicationController
       if @food_business.suppliers.include? @supplier
         @food_business.suppliers.delete(@supplier)
       else 
-        @food_business.suppliers << @supplier
+        @food_business.suppliers << @supplier        
       end
       redirect_to request.referrer
       # respond_to do |format|

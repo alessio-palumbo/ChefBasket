@@ -16,3 +16,17 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+
+$(function() {
+  $('.show-del-btn').click(function() {
+    var signin = document.querySelectorAll('#signin');
+    var delbtn = document.querySelectorAll('#delbtn');
+
+    for (var i = 0; i < signin.length; i ++) { 
+      signin[i].style.display = 'none';
+      delbtn[i].style.display = 'inline';
+    }
+    return false;
+  });
+});
+
