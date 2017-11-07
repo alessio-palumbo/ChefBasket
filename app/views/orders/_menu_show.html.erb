@@ -1,17 +1,17 @@
 <div class="menu-box">
-  <%= link_to new_order_path(food_business: @food_business)do %>
+  <%= link_to new_order_path(food_business: @order.food_business)do %>
     <div class="menu-key">
       <%= fa_icon "plus" %>
       <p class="key-title">New</p>
     </div>
   <% end %>
-  <%= link_to class:'show-del-btn', remote: true do %>
+  <%= link_to orders_path(food_business: @order.food_business) do %>
     <div class="menu-key middle-key">
-      <%= fa_icon "minus" %>
-      <p class="key-title">Delete</p>
+      <%= fa_icon "archive" %>
+      <p class="key-title">History</p>
     </div>
   <% end %>
-  <%= link_to food_business_home_url(@food_business) do %>
+  <%= link_to food_business_home_path(id: @order.food_business) do %>
     <div class="menu-key">
       <%= fa_icon "home" %>
       <p class="key-title">Home</p>

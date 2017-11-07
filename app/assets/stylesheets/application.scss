@@ -7,17 +7,22 @@ $font-xl: 36px;
 $font-large: 20px;
 $font-normal: 18px;
 $font-small: 16px;
+$font-xs: 14px;
 
 @import 'font-awesome';
 @import 'bootstrap';
+@import 'devise_errors';
 @import 'navbar';
 @import 'home';
 @import 'forms';
 @import 'food_businesses';
 @import 'suppliers';
 @import 'orders';
+@import 'products';
+@import 'order_products';
 
-// general
+
+
 html {
   font-family: 'Roboto', sans-serif;
 }
@@ -34,6 +39,22 @@ body {
 a:hover {
   text-decoration: none;
 }
+// font-sizes
+.xs {
+  font-size: $font-xs;
+}
+.small {
+  font-size: $font-small;
+}
+.medium {
+  font-size: $font-normal;
+}
+.large {
+  font-size: $font-large;
+}
+.xl {
+  font-size: $font-xl;
+}
 
 .back-arrow {
   position: absolute;
@@ -49,10 +70,12 @@ a:hover {
 }
 // keypad
 .menu-box {
+  clear: both;
   width: 100%;
-  position: absolute;
+  position: fixed;
   left: 0;
-  bottom: 0;
+  top: 100vh;
+  transform: translateY(-100%);
   border-top: 3px solid white;
   // .middle-key {
   //   border-right: 1px solid #BDBDBD;

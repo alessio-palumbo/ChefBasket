@@ -14,3 +14,47 @@
     }
   }
 }
+.total {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  text-decoration: underline;
+  div {
+    div {
+      text-align: right;
+    }
+  }
+}
+// new order
+.date-container {
+  width: 280px;
+  margin: 10px auto;
+  .date {
+    margin: 2px;
+    padding: 5px;
+    text-align-last: center;
+  }
+}
+// order
+.info-box-order{
+  .order-row {
+    padding: 0 10px;
+  }
+  .order-product {
+    // padding-left: 15px;
+    text-align: left;
+    width: 160px;
+  }
+  .order-quantifier {
+    text-align: center;
+    width: 70px;
+  }
+  .order-price {
+    text-align: right;
+    width: 55px;
+  }
+  .total {
+    .tot-title {
+      font-weight: bold;
+    }
+  }
+}

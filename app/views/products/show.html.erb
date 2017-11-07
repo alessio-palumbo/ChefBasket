@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Supplier:</strong>
+  <%= @product.supplier %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @product.order %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @product.category %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Quantifier:</strong>
+  <%= @product.quantifier %>
+</p>
+
+<p>
+  <strong>Stock level:</strong>
+  <%= @product.stock_level %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Discount:</strong>
+  <%= @product.discount %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

@@ -1,0 +1,27 @@
+.row-order {
+  line-height: 1px;
+  padding-top: 25px;
+  text-align: left;
+}
+.product {
+  width: 150px;
+}
+.variety {
+  margin-top: -5px;
+}
+.product-price {
+  text-align: center;
+  width: 70px;
+  white-space: nowrap;
+  font-size: $font-small;
+}
+.product-quantity {
+  width: 40px;
+  margin-top: -20px;
+}
+.quantity {
+  width: 30px;
+  margin: 5px;
+  text-align: center;
+  // -moz-appearance: none;
+}

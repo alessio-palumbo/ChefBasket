@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106013148) do
+ActiveRecord::Schema.define(version: 20171106054419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20171106013148) do
     t.index ["supplier_id", "food_business_id"], name: "idx_supplier_food_business"
   end
 
+  create_table "order_products", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "order_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["product_id"], name: "index_order_products_on_product_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.date "delivery_date"
     t.bigint "food_business_id"
@@ -47,6 +57,20 @@ ActiveRecord::Schema.define(version: 20171106013148) do
     t.index ["created_at"], name: "index_orders_on_created_at"
     t.index ["food_business_id"], name: "index_orders_on_food_business_id"
     t.index ["supplier_id"], name: "index_orders_on_supplier_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.bigint "supplier_id"
+    t.string "product_code"
+    t.string "product_variety"
+    t.string "name"
+    t.string "quantifier"
+    t.integer "stock_level"
+    t.decimal "price"
+    t.decimal "discount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -82,7 +106,10 @@ ActiveRecord::Schema.define(version: 20171106013148) do
   end
 
   add_foreign_key "food_businesses", "users"
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "products"
   add_foreign_key "orders", "food_businesses"
   add_foreign_key "orders", "suppliers"
+  add_foreign_key "products", "suppliers"
   add_foreign_key "suppliers", "users"
 end

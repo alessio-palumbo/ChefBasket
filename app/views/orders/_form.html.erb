@@ -10,38 +10,16 @@
       </ul>
     </div>
   <% end %>
+  <%= hidden_field_tag 'food_business', @food_business.id %>
+  <%= form.text_field :order_number, placeholder: 'Order n.', class: 'field-input'  %>
+  
+  <p class="list-title"><%= form.label :supplier_id %></p>
+  <%= form.select :supplier_id, @food_business.suppliers.map {|sup| [sup.business_name, sup.id]}, {include_blank: 'Supplier'}, class: 'field-input select' %>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date, id: :order_date %>
-  </div>
+  <p class="list-title"><%= form.label :delivery_date, 'Delivery' %></p>
+  <p class="date-container d-flex justify-content-between">
+    <%= form.date_select :delivery_date, {:order => [:day, :month, :year], start_year: Date.today.year, end_year: 1.year.since(Date.today).year }, {class: 'field-input select date'} %> 
+  </p>
 
-  <div class="field">
-    <%= form.label :food_business_id %>
-    <%= form.text_field :food_business_id, id: :order_food_business_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :supplier_id %>
-    <%= form.text_field :supplier_id, id: :order_supplier_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :gross_total %>
-    <%= form.text_field :gross_total, id: :order_gross_total %>
-  </div>
-
-  <div class="field">
-    <%= form.label :gst %>
-    <%= form.text_field :gst, id: :order_gst %>
-  </div>
-
-  <div class="field">
-    <%= form.label :order_number %>
-    <%= form.text_field :order_number, id: :order_order_number %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.submit class: 'button' %>
 <% end %>

@@ -1,13 +1,35 @@
 <p class='text-center'><%= @order.food_business.business_name %></p>
 
-<p>Order <%= @order.order_number %> - <%= @order.created_at.strftime("%m/%d/%Y") %></p>
+<p class="box-title">Order <%= @order.order_number %> - <%= @order.created_at.strftime("%m/%d/%Y") %></p>
 <hr>
 
-<div class="box-title d-flex justify-content-around">
-  <p>To: <%= @order.supplier.business_name %><p>
+<div class="small d-flex justify-content-around">
+  <p>To: <%= @order.supplier.business_name %></p>
   <p>Delivery: <%= @order.delivery_date.strftime("%m/%d/%Y") %></p>
 </div>
 
-<div class="info-box">
-  
+<div class="info-box info-box-order">
+  <% @order.products.each do |product| %>
+    <div class="row order-row xs">
+      <div class="order-product">
+        <%= product.name %>
+        <% if product.product_variety %>
+          <span> - <%= product.product_variety %></span>
+        <% end %>
+      </div>
+      <div class="order-quantifier">
+        <%= find_quantity(product) %><%= product.quantifier %>
+      </div>
+      <div class="order-price">
+        <%= estimate(find_quantity(product), product.price) %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="total xs">
+    <p class="text-right"><span class="tot-title">GST: </span><%= calc_gst(@order.order_products) %><p>
+    <p class="text-right"><span class="tot-title">Total: </span><%= total(@order.order_products) %></p>
+  </div>
 </div>
+
+<%= render 'menu_show' %>

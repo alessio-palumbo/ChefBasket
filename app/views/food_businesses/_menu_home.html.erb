@@ -1,5 +1,5 @@
 <div class="menu-box">
-  <%= link_to orders_path(food_business: @food_business) do %>
+  <%= link_to new_order_path(food_business: @food_business) do %>
     <div class="menu-key">
       <%= fa_icon "file" %>
       <p class="key-title">New order</p>
@@ -11,7 +11,7 @@
       <p class="key-title">My Suppliers</p>
     </div>
   <% end %>
-  <%= link_to new_food_business_path do %>
+  <%= link_to orders_path(food_business: @food_business) do %>
     <div class="menu-key">
       <%= fa_icon "archive" %>
       <p class="key-title">History</p>

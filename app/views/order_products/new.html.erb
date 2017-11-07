@@ -1,0 +1,42 @@
+<p class='text-center'><%= @order.food_business.business_name %></p>
+
+<p><%= @order.supplier.business_name %></p>
+
+<%= render 'search' %>
+
+<p class="list-title">Products</p>
+
+<%= form_with(model: @order_product, local: true) do |form| %>
+
+  <% if @products %>
+    <% @products.each do |product| %>
+    
+      <div class="row row-order list-item">
+        <div class="product">
+          <p class="product-name"><%= product.name %></p>
+          <p class="xs variety"><%= product.product_variety %></span></p>     
+        </div>
+        <div class="product-price">
+          <p><%= product.price %> <%= product.quantifier %></p>
+        </div>
+        <div class="product-quantity d-flex justify-content-between align-items-center">
+          <%= form.button class: 'link form-btn' do %>
+            <%= fa_icon "minus" %>
+          <% end %>
+          <%= hidden_field_tag :product_id, product.id, name: 'product_id[]' %>
+          <%= form.number_field :quantity, value: 0, name: 'quantity[]', class: "quantity" %>
+          <%= form.button class: 'link form-btn' do %>
+            <%= fa_icon "plus" %>
+          <% end %> 
+        </div>
+      </div>
+      
+    <% end %>
+  <% else %>
+    <p class="list-item">No products available from this supplier</p>
+  <% end %>
+
+  <%= hidden_field_tag :order_id, @order.id %>
+  <%= form.submit 'Checkout', class: 'button' %>
+<% end %>
+
