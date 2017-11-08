@@ -34,6 +34,11 @@ class OrderProductsController < ApplicationController
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
+
+        # Send order notification to supplier
+        message_to_receiver = "New order from #{@order.food_business.business_name} received at #{@order.created_at.strftime('%l:%M %p on %d/%m/%Y, ')}. \n Expected delivery on #{@order.delivery_date}."
+        OrderMailer.order_notification(ENV.fetch('TEST_EMAIL'), "ChefBasket - Order notification", message_to_receiver).deliver_now
+        # Send email notification to Supplier
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }

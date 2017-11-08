@@ -18,6 +18,10 @@ class MessagesController < ApplicationController
       if @message.save!
         format.html { redirect_to @conversation }
         format.json { render :show, status: :created, location: @message }
+
+        # Send email notification to receiver
+        message_to_receiver = "You have received a message from #{@message.sender.company_name} at #{@message.created_at.strftime('%l:%M %p')}. \n #{@message.content}."
+        MessageMailer.message_notification(ENV.fetch('TEST_EMAIL'), "ChefBasket - Message notification", message_to_receiver).deliver_now
       else
         format.html { render :new }
         format.json { render json: @message.errors, status: :unprocessable_entity }
