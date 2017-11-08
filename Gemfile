@@ -35,7 +35,12 @@ gem 'jquery-rails'
 gem 'devise'
 gem "font-awesome-rails"
 gem 'mailgun-ruby', '~>1.1.6'
+# Shrine gems
+gem 'fastimage'
+gem 'image_processing'
+gem 'mini_magick'
 gem 'shrine'
+gem 'aws-sdk-s3', '~> 1.2.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

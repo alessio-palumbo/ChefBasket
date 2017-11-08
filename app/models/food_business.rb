@@ -1,4 +1,6 @@
 class FoodBusiness < ApplicationRecord
+  include ImageUploader::Attachment.new(:image)
+  
   validates :business_name, :address, :abn_number, :contact_number, :business_category, :email, presence: true
   validates :business_name, :abn_number, uniqueness: true
 

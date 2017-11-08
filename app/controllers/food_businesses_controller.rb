@@ -76,6 +76,6 @@ class FoodBusinessesController < ApplicationController
     end
 
     def food_business_params
-      params.require(:food_business).permit(:business_name, :address, :abn_number, :contact_number, :business_category, :email)
+      params.require(:food_business).permit(:business_name, :address, :abn_number, :contact_number, :business_category, :email, :image)
     end
 end

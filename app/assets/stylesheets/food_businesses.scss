@@ -24,3 +24,35 @@
   font-size: $font-small;
   font-weight: bold;
 }
+.file-box {
+  position: relative;
+  margin: 10px auto;
+  border: 2px solid $primary;
+  border-radius: 20px;
+  width: 280px;
+  height: 50px;
+  background: $gray;
+  color: transparent;
+  transition: background-color 0.3s ;
+  .file {
+    color: transparent;
+    width: 280px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 9999px;
+    outline: none;
+  }
+}
+.file-box:hover {
+  background: $lightprimary;
+}
+.file-box:before {
+  content: 'Profile Image';
+  color: black;
+  vertical-align: -8px;
+}
+.profile-image {
+  margin: 30px auto;
+}

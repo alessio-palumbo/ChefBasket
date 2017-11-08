@@ -1,8 +1,8 @@
 <div class="menu-box">
-  <%= link_to new_supplier_path do %>
+  <%= link_to do %>
     <div class="menu-key">
-      <%= fa_icon "pencil" %>
-      <p class="key-title">Edit</p>
+      <%= fa_icon "area-chart" %>
+      <p class="key-title">Stats</p>
     </div>
   <% end %>
   <%= link_to edit_supplier_path(@supplier) do %>
@@ -11,10 +11,10 @@
       <p class="key-title">Edit</p>
     </div>
   <% end %>
-  <%= link_to new_supplier_path do %>
+  <%= link_to home_path do %>
     <div class="menu-key">
-      <%= fa_icon "area-chart" %>
-      <p class="key-title">Stats</p>
+      <%= fa_icon "home" %>
+      <p class="key-title">Home</p>
     </div>
   <% end %>
 </div>

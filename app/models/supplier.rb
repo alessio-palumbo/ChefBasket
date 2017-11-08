@@ -1,5 +1,7 @@
 class Supplier < ApplicationRecord
-  validates :business_name, :address, :abn_number, :contact_number, :business_category, :email, presence: true
+  include ImageUploader::Attachment.new(:image)
+
+  validates :business_name, :address, :abn_number, :contact_number, :supplier_type, :email, presence: true
   validates :business_name, :abn_number, uniqueness: true
 
   belongs_to :user

@@ -5,14 +5,18 @@
   <h1 class="app-name text-center">ChefBasket</h1>
   <a href="#" class="hamburger"><%= fa_icon "bars"%></a>
   <div class="dashboard">
-    <% if current_user.user_type == 'Supplier' %>
-      <li><%= link_to 'Home', supplier_path %></li>
+    <% if current_user && current_user.user_type == 'Supplier' %>
+      <li><%= link_to 'Home', home_path(current_user.supplier) %></li>
+    <% elsif current_user && current_user.user_type == 'Food Business' %>
+      <li><%= link_to 'My businesses', food_businesses_path %></li>
     <% else %>
-      <li><%= link_to 'Home', food_businesses_path %></li>
+      <li><%= link_to 'Home', new_user_session_path %></li>
     <% end %>
     <li><%= link_to 'Payment Info' %></li>
     <li><%= link_to 'Terms & Conditions' %></li>
     <li><%= link_to 'Contact' %></li>
-    <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+    <% if current_user %>
+      <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+    <% end %>
   </div>
 </nav>

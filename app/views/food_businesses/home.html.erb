@@ -1,5 +1,14 @@
 <p class="home-title"><%= @food_business.business_name %></p>
 
-<div class="message-board"></div>
+<% if @food_business.image %>
+  <div class="profile-image">
+    <%= image_tag @food_business.image_url(:thumb) %>
+  </div>
+<% end %>
+<%# 
+<div class="message-board">
+  <br>
+  <p class="small">Notifications</p>
+</div> %>
 
 <%= render 'menu_home' %>

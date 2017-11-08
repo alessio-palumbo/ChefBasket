@@ -3,7 +3,6 @@ class SuppliersController < ApplicationController
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
 
   def home
-    @supplier = current_user.supplier
   end
 
   def index
@@ -47,7 +46,8 @@ class SuppliersController < ApplicationController
   def update
     respond_to do |format|
       if @supplier.update(supplier_params)
-        format.html { redirect_to @supplier, notice: 'Supplier was successfully updated.' }
+       
+        format.html { redirect_to home_path, notice: 'Supplier was successfully updated.' }
         format.json { render :show, status: :ok, location: @supplier }
       else
         format.html { render :edit }
@@ -67,12 +67,16 @@ class SuppliersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_supplier
-      @supplier = Supplier.find(params[:id])
+      if current_user.user_type == 'Supplier'
+        @supplier = current_user.supplier
+      else
+        @supplier = Supplier.find(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supplier_params
-      params.require(:supplier).permit(:business_name, :address, :abn_number, :contact_number, :supplier_type, :email)
+      params.require(:supplier).permit(:business_name, :address, :abn_number, :contact_number, :supplier_type, :email, :image)
     end
 
 end

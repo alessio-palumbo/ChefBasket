@@ -19,7 +19,11 @@
 
   <%= form.text_field :abn_number, placeholder: 'ABN', class: 'field-input' %>
 
-  <%= form.select :supplier_type, ['Vegetables', 'Meat', 'Fish', 'Dry Goods', 'Dairy', 'Drinks', 'Baked Goods/Pastry'], {prompt: 'Select category'}, {class: 'field-input select' } %>
+  <%= form.select :supplier_type, ['Vegetables', 'Meat', 'Fish', 'Dry Goods', 'Dairy', 'Drinks', 'Baked Goods/Pastry'], {include_blank: 'Select category'}, {class: 'field-input select' } %>
 
+  <div class="file-box">
+    <%= form.file_field :image, class: 'file' %>
+  </div>
+  
   <%= form.submit 'Create Profile', class: 'button' %>
 <% end %>

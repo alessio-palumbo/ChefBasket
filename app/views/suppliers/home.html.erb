@@ -1,5 +1,11 @@
 <p class="home-title"><%= current_user.company_name %></p>
 
-<div class="message-board"></div>
+<% if current_user.supplier.image %>
+  <div class="profile-image">
+    <%= image_tag current_user.supplier.image_url(:thumb) %>
+  </div>
+<% end %>
+
+<%# <div class="message-board"></div> %>
 
 <%= render 'menu_home' %>
