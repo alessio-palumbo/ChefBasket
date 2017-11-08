@@ -1,0 +1,20 @@
+<div class="menu-box">
+  <%= link_to conversations_path(food_business: @conversation.food_business)do %>
+    <div class="menu-key">
+      <%= fa_icon "comments" %>
+      <p class="key-title">Conversations</p>
+    </div>
+  <% end %>
+  <%= link_to do %>
+    <div class="menu-key middle-key">
+      <%= fa_icon "minus" %>
+      <p class="key-title">Delete</p>
+    </div>
+  <% end %>
+  <%= link_to food_business_home_path(id: @conversation.food_business) do %>
+    <div class="menu-key">
+      <%= fa_icon "home" %>
+      <p class="key-title">Home</p>
+    </div>
+  <% end %>
+</div>

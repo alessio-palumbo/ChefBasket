@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106054419) do
+ActiveRecord::Schema.define(version: 20171108001917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "food_business_id"
+    t.bigint "supplier_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_business_id"], name: "index_conversations_on_food_business_id"
+    t.index ["supplier_id"], name: "index_conversations_on_supplier_id"
+  end
 
   create_table "food_businesses", force: :cascade do |t|
     t.string "business_name"
@@ -33,6 +42,17 @@ ActiveRecord::Schema.define(version: 20171106054419) do
     t.bigint "supplier_id", null: false
     t.index ["food_business_id", "supplier_id"], name: "idx_food_business_supplier"
     t.index ["supplier_id", "food_business_id"], name: "idx_supplier_food_business"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "conversation_id"
+    t.bigint "sender_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["created_at"], name: "index_messages_on_created_at"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "order_products", force: :cascade do |t|
@@ -105,7 +125,11 @@ ActiveRecord::Schema.define(version: 20171106054419) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "conversations", "food_businesses"
+  add_foreign_key "conversations", "suppliers"
   add_foreign_key "food_businesses", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "food_businesses"

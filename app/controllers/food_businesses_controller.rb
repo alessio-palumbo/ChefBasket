@@ -3,7 +3,7 @@ class FoodBusinessesController < ApplicationController
   before_action :set_food_business, only: [:home, :show, :edit, :update, :destroy]
 
   def home
-    # @food_business = FoodBusiness.find_by(params[:business_name])
+    session[:food_business_id] = @food_business.id
   end
 
   def index

@@ -1,0 +1,17 @@
+.sender, .receiver {
+  width: 240px;
+  min-height: 50px;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: left;
+  position: relative;
+}
+.sender {
+  background: $lightprimary;
+  left: 10px;
+}
+.receiver {
+  background: $primary;
+  color: white;
+  right: 10px;
+}

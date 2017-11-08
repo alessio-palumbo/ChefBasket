@@ -1,0 +1,15 @@
+<%# <p><%= @food_business.business_name %>
+<p>My Conversations</p>
+<br>
+<% @conversations.each do |conversation| %>
+  <%= link_to conversation, class: 'link' do%>
+    <h3>Conversation with <%= conversation.supplier.business_name %></h3>
+  <% end %>
+  <p>Total messages: <%= conversation.messages.count %></p>
+  <% if conversation.messages.count > 0 %>
+    <p>Last message: <%= conversation.messages.last.created_at.to_time.strftime('%a, %b %e, %l:%M %p') %></p>
+  <% end %>
+  
+<% end %>
+
+<%= render 'menu' %>

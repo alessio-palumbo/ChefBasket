@@ -1,0 +1,15 @@
+<%= form_for @message do |f| %>
+  <div class="text-box">
+    <% if @conversation %>
+      <%= hidden_field_tag :conversation_id, @conversation.id %>
+    <% else %>
+      <%= hidden_field_tag :food_business_id, @food_business.id %>
+      <%= hidden_field_tag :supplier_id, @supplier.id %>
+    <% end %>
+
+    <%= f.text_area :content, class: 'textarea field-input' %>
+    <%= f.submit 'Send', class: 'button textarea-btn' %>
+  </div>
+<% end %>
+
+<%= render 'messages/menu' %>

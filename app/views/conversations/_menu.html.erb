@@ -1,0 +1,20 @@
+<div class="menu-box">
+  <%= link_to suppliers_path(food_business: params[:food_business])do %>
+    <div class="menu-key">
+      <%= fa_icon "users" %>
+      <p class="key-title">My suppliers</p>
+    </div>
+  <% end %>
+  <%= link_to do %>
+    <div class="menu-key middle-key">
+      <%= fa_icon "minus" %>
+      <p class="key-title">Delete</p>
+    </div>
+  <% end %>
+  <%= link_to food_business_home_path(id: params[:food_business]) do %>
+    <div class="menu-key">
+      <%= fa_icon "home" %>
+      <p class="key-title">Home</p>
+    </div>
+  <% end %>
+</div>

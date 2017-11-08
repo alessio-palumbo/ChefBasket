@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :messages
+  resources :conversations
   get 'order_products/new'
 
   devise_for :users, controllers: {
