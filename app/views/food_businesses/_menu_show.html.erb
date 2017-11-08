@@ -1,6 +1,9 @@
 <div class="menu-box">
   <%= link_to new_food_business_path do %>
-    <div class="menu-key"></div>
+    <div class="menu-key">
+      <%= fa_icon "area-chart" %>
+      <p class="key-title">Stats</p>
+    </div>
   <% end %>
   <%= link_to edit_food_business_path(@food_business) do %>
     <div class="menu-key middle-key">
@@ -8,10 +11,10 @@
       <p class="key-title">Edit</p>
     </div>
   <% end %>
-  <%= link_to new_food_business_path do %>
+  <%= link_to food_business_home_path do %>
     <div class="menu-key">
-      <%= fa_icon "area-chart" %>
-      <p class="key-title">Stats</p>
+      <%= fa_icon "home" %>
+      <p class="key-title">Home</p>
     </div>
   <% end %>
 </div>

@@ -2,7 +2,7 @@ class ConversationsController < ApplicationController
   before_action :set_conversation, only: [:show]
 
   def index
-    @conversations = Conversation.where(food_business_id: @food_business).order('updated_at DESC')
+    @conversations = Conversation.where(food_business_id: params[:food_business]).order('updated_at DESC')
   end
 
   def show

@@ -35,6 +35,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem "font-awesome-rails"
 gem 'mailgun-ruby', '~>1.1.6'
+gem 'shrine'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

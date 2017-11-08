@@ -15,3 +15,16 @@
   color: white;
   right: 10px;
 }
+.conv-box {
+  border: 2px solid transparent;
+  transition: border 0.2s;
+  .conv-details {
+    text-align: left;
+    line-height: 12px;
+    color: black;
+    font-size: $font-xs;
+  }
+}
+.conv-box:hover {
+  border: 2px solid $primary;
+}
