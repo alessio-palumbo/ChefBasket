@@ -27,5 +27,6 @@ module ChefBasket
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| html_tag}
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.serve_static_assets = true
   end
 end
