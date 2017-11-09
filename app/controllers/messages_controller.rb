@@ -2,21 +2,24 @@ class MessagesController < ApplicationController
   before_action :find_conversation!
 
   def new
-    redirect_to conversation_path(@conversation) and return if @conversation
+    @supplier = Supplier.find(params[:supplier])
+    @food_business = FoodBusiness.find(params[:food_business])
+    redirect_to conversation_path(@conversation, food_business: @food_business, supplier: @supplier) and return if @conversation
     @message = Message.new
   end
   
   def create
-    
     @conversation ||= Conversation.create!(food_business_id: @food_business.id, supplier_id: @supplier.id) 
 
     @message = Message.new(message_params)
     @message.sender = current_user
     @message.conversation = @conversation
+    @supplier = @conversation.supplier
+    @food_business = @conversation.food_business
 
     respond_to do |format|
       if @message.save!
-        format.html { redirect_to @conversation }
+        format.html { redirect_to conversation_path(@conversation, supplier: @supplier.id) }
         format.json { render :show, status: :created, location: @message }
 
         # Send email notification to receiver

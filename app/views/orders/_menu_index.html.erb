@@ -1,20 +1,45 @@
-<div class="menu-box">
-  <%= link_to new_order_path(food_business: @food_business)do %>
-    <div class="menu-key">
-      <%= fa_icon "plus" %>
-      <p class="key-title">New</p>
-    </div>
-  <% end %>
-  <%= link_to class:'show-del-btn', remote: true do %>
-    <div class="menu-key middle-key">
-      <%= fa_icon "minus" %>
-      <p class="key-title">Delete</p>
-    </div>
-  <% end %>
-  <%= link_to food_business_home_url(@food_business) do %>
-    <div class="menu-key">
-      <%= fa_icon "home" %>
-      <p class="key-title">Home</p>
-    </div>
-  <% end %>
-</div>
+<%# food_business menu %>
+<% if @food_business %>
+  <div class="menu-box">
+    <%= link_to new_order_path(food_business: @food_business)do %>
+      <div class="menu-key">
+        <%= fa_icon "plus" %>
+        <p class="key-title">New</p>
+      </div>
+    <% end %>
+    <%= link_to class:'show-del-btn', remote: true do %>
+      <div class="menu-key middle-key">
+        <%= fa_icon "minus" %>
+        <p class="key-title">Delete</p>
+      </div>
+    <% end %>
+    <%= link_to food_business_home_url(@food_business) do %>
+      <div class="menu-key">
+        <%= fa_icon "home" %>
+        <p class="key-title">Home</p>
+      </div>
+    <% end %>
+  </div>
+<%# supplier menu %>
+<% else %>
+    <div class="menu-box">
+    <%= link_to do %>
+      <div class="menu-key">
+        <%= fa_icon "plus" %>
+        <p class="key-title">New</p>
+      </div>
+    <% end %>
+    <%= link_to class:'show-del-btn', remote: true do %>
+      <div class="menu-key middle-key">
+        <%= fa_icon "minus" %>
+        <p class="key-title">Delete</p>
+      </div>
+    <% end %>
+    <%= link_to home_url(@supplier) do %>
+      <div class="menu-key">
+        <%= fa_icon "home" %>
+        <p class="key-title">Home</p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

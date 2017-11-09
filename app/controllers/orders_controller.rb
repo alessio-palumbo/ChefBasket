@@ -1,11 +1,16 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :set_food_business, only: [:index, :new, :create, :destroy]
+  before_action :set_food_business, only: [:new, :create, :destroy]
 
   def index
-    if @food_business.orders
-      @orders = @food_business.orders
-    end
+    if params[:food_business]
+      @food_business = FoodBusiness.find(params[:food_business])
+      @orders = @food_business.orders if @food_business.orders
+    elsif params[:supplier]
+      @supplier = Supplier.find(params[:supplier])
+      @orders = Order.where("supplier_id = ? AND delivery_date <= ?", @supplier, Date.today)
+      @new_orders = Order.where("supplier_id = ? AND delivery_date > ?", @supplier, Date.today)
+    end 
   end
 
   def show

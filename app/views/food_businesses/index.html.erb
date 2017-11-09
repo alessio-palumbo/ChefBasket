@@ -1,23 +1,17 @@
 <p class='text-center'><%= current_user.company_name %></p>
 
-<br>
-
-<% @food_businesses.each do |food_business| %>
-  <%= link_to food_business do %>
-    <div class="list-item d-flex justify-content-between">
-      <p><%= food_business.business_name %></p>
-      <p>
-        <%= link_to food_business_home_url(food_business), class: 'link' do %>
-          <%= fa_icon "sign-in", id: 'signin' %>
-        <% end %>  
-        <%= link_to food_business_home_url(food_business), class: 'link' do %>
-          <%= fa_icon "minus-circle", class: 'text-danger hidden', id: 'delbtn' %>
-        <% end %>
-      </p>  
-    </div>
-  <% end %>
+<% if current_user.user_type == 'Supplier'%>
+  <%= render 'search' %>
 <% end %>
 
+<br>
+
+<% if current_user.user_type == 'Food Business'%>
+  <%= render 'my_businesses' %>
+<% else %>
+  <%= render 'my_clients' %>
+<% end %>
+ 
 <br>
 
 <%= render 'menu_index' %>

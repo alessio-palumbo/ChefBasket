@@ -2,7 +2,7 @@
 <p>My Conversations</p>
 <br>
 <% @conversations.each do |conversation| %>
-  <%= link_to conversation do %>
+  <%= link_to conversation_path(conversation.id, supplier: params[:supplier]) do %>
     <div class="info-box conv-box">
       <p class="xs text-center">Last Message: 
         <%= conversation.messages.last.created_at.to_time.strftime('%a, %b %e, %l:%M %p') %></p>

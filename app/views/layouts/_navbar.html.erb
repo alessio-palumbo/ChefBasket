@@ -10,7 +10,7 @@
     <% elsif current_user && current_user.user_type == 'Food Business' %>
       <li><%= link_to 'My businesses', food_businesses_path %></li>
     <% else %>
-      <li><%= link_to 'Home', new_user_session_path %></li>
+      <li><%= link_to 'Login', new_user_session_path %></li>
     <% end %>
     <li><%= link_to 'Payment Info' %></li>
     <li><%= link_to 'Terms & Conditions' %></li>

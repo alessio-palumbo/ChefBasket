@@ -1,20 +1,45 @@
-<div class="menu-box">
-  <%= link_to conversations_path(food_business: @conversation.food_business)do %>
-    <div class="menu-key">
-      <%= fa_icon "comments" %>
-      <p class="key-title">Messagges</p>
-    </div>
-  <% end %>
-  <%= link_to do %>
-    <div class="menu-key middle-key">
-      <%= fa_icon "minus" %>
-      <p class="key-title">Delete</p>
-    </div>
-  <% end %>
-  <%= link_to food_business_home_path(id: @conversation.food_business) do %>
-    <div class="menu-key">
-      <%= fa_icon "home" %>
-      <p class="key-title">Home</p>
-    </div>
-  <% end %>
-</div>
+<%# food_business %>
+<% if current_user.user_type == 'Food Business' %>
+  <div class="menu-box">
+    <%= link_to conversations_path(food_business: params[:food_business])do %>
+      <div class="menu-key">
+        <%= fa_icon "comments" %>
+        <p class="key-title">Messagges</p>
+      </div>
+    <% end %>
+    <%= link_to do %>
+      <div class="menu-key middle-key">
+        <%= fa_icon "minus" %>
+        <p class="key-title">Delete</p>
+      </div>
+    <% end %>
+    <%= link_to food_business_home_path(food_business: params[:food_business]) do %>
+      <div class="menu-key">
+        <%= fa_icon "home" %>
+        <p class="key-title">Home</p>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+<%# supplier %>
+  <div class="menu-box">
+    <%= link_to conversations_path(supplier: params[:supplier])do %>
+      <div class="menu-key">
+        <%= fa_icon "comments" %>
+        <p class="key-title">Messagges</p>
+      </div>
+    <% end %>
+    <%= link_to do %>
+      <div class="menu-key middle-key">
+        <%= fa_icon "minus" %>
+        <p class="key-title">Delete</p>
+      </div>
+    <% end %>
+    <%= link_to home_path(supplier: params[:supplier]) do %>
+      <div class="menu-key">
+        <%= fa_icon "home" %>
+        <p class="key-title">Home</p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

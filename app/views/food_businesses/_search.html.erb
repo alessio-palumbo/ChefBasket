@@ -1,0 +1,13 @@
+<div class="search-bar">
+  <%= form_tag(@food_business, method: "get", class: 'd-flex') do %>
+    <%= hidden_field_tag :supplier, current_user.supplier.id %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search food business", class: 'field-input search-input' %>
+    <%= submit_tag "Search", class: 'button' %>
+  <% end %>
+</div>
+
+<% if params[:search] %>
+  <p><strong><%= pluralize (@my_clients.count + @food_businesses.count), 'result' %> found</strong>
+    <%= link_to 'Clear', food_businesses_path(supplier: @supplier), class: 'link-signin'%>
+  </p>
+<% end %>

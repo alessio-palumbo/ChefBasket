@@ -1,20 +1,20 @@
 <div class="menu-box">
-  <%= link_to do %>
+  <%= link_to orders_path(supplier: current_user.supplier) do %>
     <div class="menu-key">
       <%= fa_icon "file" %>
       <p class="key-title">Orders</p>
     </div>
   <% end %>
-  <%= link_to do %>
+  <%= link_to food_businesses_path(supplier: current_user.supplier) do %>
     <div class="menu-key middle-key">
       <%= fa_icon "users" %>
       <p class="key-title">My clients</p>
     </div>
   <% end %>
-  <%= link_to do %>
+  <%= link_to conversations_path(supplier: current_user.supplier) do %>
     <div class="menu-key">
-      <%= fa_icon "archive" %>
-      <p class="key-title">History</p>
+      <%= fa_icon "comments" %>
+      <p class="key-title">Messages</p>
     </div>
   <% end %>
     <%= link_to do %>

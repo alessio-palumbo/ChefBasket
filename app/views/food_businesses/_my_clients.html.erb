@@ -1,0 +1,39 @@
+<p class="list-title">My Clients</p>
+<% if @my_clients && @my_clients.count > 0 %>
+  <% @my_clients.each do |food_business| %>
+    <%= link_to food_business do %>
+      <div class="list-item d-flex justify-content-between">
+        <p><%= food_business.business_name %></p>
+        <%= form_with model: @supplier do |f| %>
+          <%= link_to new_message_path(food_business: food_business, supplier: current_user.supplier), class: 'link' do %>
+            <%= fa_icon "comments" %> 
+          <% end %>
+          <%= hidden_field_tag :food_business, food_business.id %>
+          <%= f.button class: 'link form-btn text-danger' do %>
+            <%= fa_icon "minus-circle" %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <p class="list-item">Your list is empty</p>
+<% end %>
+
+<p class="list-title">Food Businesses</p>
+<% @food_businesses.each do |food_business| %>
+  <%= link_to food_business do %>
+    <div class="list-item d-flex justify-content-between">
+      <p><%= food_business.business_name %></p>
+      <%= form_with model: @supplier do |f| %>
+        <%= link_to food_business, class: 'link' do %>
+          <%= fa_icon "phone-square" %>
+        <% end %>
+        <%= hidden_field_tag :food_business, food_business.id %>
+        <%= f.button class: 'link form-btn' do %>
+          <%= fa_icon "plus-square"%>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

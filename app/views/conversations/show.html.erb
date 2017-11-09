@@ -1,4 +1,6 @@
-<p>Conversation with <strong><%= @conversation.supplier.business_name %></strong</p>
+<p>Conversation with <strong><br>
+  <%= @receiver %></strong>
+</p>
 
 <% @conversation.messages.each_with_index do |message, index| %>
   <div class="<%= message.sender_id == current_user.id ? 'sender' : 'receiver' %>">
@@ -8,7 +10,7 @@
   <% if message.sender_id == current_user.id %>
     <span class="sender-details">Me</span> - 
   <% else %>
-    <span class="receiver-details"><%= @conversation.supplier.business_name %> -
+    <span class="receiver-details"><%= @receiver %> -
   <% end %> 
     <em><%= message.created_at.strftime("%m/%d/%Y, %l:%M %p") %></em>
   </p>

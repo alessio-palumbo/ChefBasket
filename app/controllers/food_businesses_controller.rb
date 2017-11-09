@@ -7,7 +7,17 @@ class FoodBusinessesController < ApplicationController
   end
 
   def index
-    @food_businesses = FoodBusiness.where(user: current_user)
+    if current_user.user_type == 'Food Business'
+      @food_businesses = FoodBusiness.where(user: current_user)
+    else
+      @supplier = current_user.supplier
+      @my_clients = @supplier.food_businesses 
+      @food_businesses = FoodBusiness.all - @my_clients
+      if params[:search]
+        @my_clients = @supplier.food_businesses.search(params[:search])
+        @food_businesses = FoodBusiness.search(params[:search]) - @my_clients 
+      end 
+    end 
   end
 
   def show

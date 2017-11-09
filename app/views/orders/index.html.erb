@@ -1,24 +1,14 @@
-<p class='text-center'><%= @food_business.business_name %></p>
+<p class='text-center'>
+  <%= @food_business ? @food_business.business_name : @supplier.business_name %> 
+</p>
 
-<p class='list-title'>Orders history</p>
-<% @orders.each do |order| %>
-  <%= link_to order do %>
-    <div class="info-box-orders d-flex justify-content-between">
-      <p><span class="order-title">Order n.: </span><%= order.order_number %></p>
-      <p><span class="order-title">To: </span><%= order.supplier.business_name %></p>
-      <p><span class="order-title">Delivery Date: </span><%= order.delivery_date %></p>
-      <p><span class="order-title">Total: </span><%= total(order.order_products) %></p>
-      <p>
-        <%= link_to class: 'link' do %>
-          <%= fa_icon "print", id: 'signin' %>
-        <% end %>  
-        <%= link_to order_path(id: order.id, food_business: @food_business.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link' do %>
-          <%= fa_icon "minus-circle", class: 'text-danger', id: 'delbtn' %>
-        <% end %>
-      </p>  
-    </div>
-  <% end %>
-<% end %>
+<%# new orders %>
+<%= render 'new_orders' if @supplier %>
+
+<br>
+
+<%# Order history %>
+<%= render 'orders'%>
 
 <br>
 

@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.text_field :business_name, placeholder: current_user.company_name, class: 'field-input' %>
+
   <%= form.text_field :address, placeholder: 'Address', autofocus: true, class: 'field-input' %>
 
   <%= form.text_field :contact_number, placeholder: 'Contact number', class: 'field-input' %>

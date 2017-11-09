@@ -1,0 +1,23 @@
+<p class='list-title'>New Orders</p>
+<% @new_orders.each do |order| %>
+  <%= link_to order do %>
+    <div class="info-box-orders d-flex justify-content-between">
+      <p><span class="order-title">Order n.: </span><%= order.order_number %></p>
+      <% if current_user.supplier %>
+        <p><span class="order-title">From: </span><%= order.food_business.business_name %></p>
+      <% else %>
+        <p><span class="order-title">To: </span><%= order.supplier.business_name %></p>
+      <% end %>
+      <p><span class="order-title">Delivery Date: </span><%= order.delivery_date %></p>
+      <p><span class="order-title">Total: </span><%= total(order.order_products) %></p>
+      <p>
+        <%= link_to class: 'link' do %>
+          <%= fa_icon "print" %>
+        <% end %>  
+        <%= link_to class: 'link' do %>
+          <%= fa_icon "archive" %>
+        <% end %>
+      </p>  
+    </div>
+  <% end %>
+<% end %>

@@ -1,4 +1,10 @@
-<p>New message to <%= @supplier.business_name %></p>
+<p>New message to 
+  <% if current_user.user_type == 'Food Business'%>
+    <%= @supplier.business_name %>
+  <% else %>
+    <%= @food_business.business_name %>
+  <% end %>
+</p>
 
 <br>
 

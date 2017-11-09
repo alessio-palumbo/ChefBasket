@@ -8,8 +8,9 @@ class FoodBusiness < ApplicationRecord
   has_and_belongs_to_many :suppliers
   has_many :orders
 
-  def self.add_supplier(supplier)
-    self.suppliers << supplier
+  def self.search(search)
+    keyword = search.downcase
+    where("lower(business_name) LIKE ? OR lower(business_category) LIKE ?", "%#{keyword}%", "%#{keyword}%")
   end
 
 end
