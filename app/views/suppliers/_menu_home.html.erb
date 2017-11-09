@@ -17,10 +17,10 @@
       <p class="key-title">Messages</p>
     </div>
   <% end %>
-    <%= link_to do %>
+    <%= link_to products_path(supplier: current_user.supplier) do %>
     <div class="menu-key">
-      <%= fa_icon "search" %>
-      <p class="key-title">Search</p>
+      <%= fa_icon "th-list" %>
+      <p class="key-title">My products</p>
     </div>
   <% end %>
   <%= link_to do %>

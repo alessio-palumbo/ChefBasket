@@ -28,6 +28,12 @@ By providing a common portal, restaurants and suppliers can simplify they way th
 - Be notified of new order/ restaurant message
 - Holiday notifications/ Discounts through system
 
+### User Stories
+![alt-text](app/assets/images/trello.png)
+
+### ERD
+![alt-text](app/assets/images/chefbasket-erd.png)t
+
 ### User Restaurant
 #### My Food Businesses
 - View list of businesses owned
