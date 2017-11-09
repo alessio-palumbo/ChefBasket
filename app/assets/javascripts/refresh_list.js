@@ -1,0 +1,1 @@
+$('#list-container').load('/supplier?food_business=1 #list-container')

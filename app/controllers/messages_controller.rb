@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   end
   
   def create
-    @conversation ||= Conversation.create!(food_business_id: @food_business.id, supplier_id: @supplier.id) 
+    @conversation ||= Conversation.create!(food_business_id: params[:food_business_id], supplier_id: params[:supplier_id]) 
 
     @message = Message.new(message_params)
     @message.sender = current_user

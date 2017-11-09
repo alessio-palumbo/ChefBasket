@@ -1,6 +1,6 @@
 <p class='list-title'>New Orders</p>
 <% @new_orders.each do |order| %>
-  <%= link_to order do %>
+  <%= link_to order_path(order, supplier_id: @supplier.id) do %>
     <div class="info-box-orders d-flex justify-content-between">
       <p><span class="order-title">Order n.: </span><%= order.order_number %></p>
       <% if current_user.supplier %>

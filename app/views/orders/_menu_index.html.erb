@@ -23,16 +23,16 @@
 <%# supplier menu %>
 <% else %>
     <div class="menu-box">
-    <%= link_to do %>
+    <%= link_to food_businesses_url(@supplier) do %>
       <div class="menu-key">
-        <%= fa_icon "plus" %>
-        <p class="key-title">New</p>
+        <%= fa_icon "users" %>
+        <p class="key-title">My clients</p>
       </div>
     <% end %>
     <%= link_to class:'show-del-btn', remote: true do %>
-      <div class="menu-key middle-key">
-        <%= fa_icon "minus" %>
-        <p class="key-title">Delete</p>
+      <div class="menu-key">
+        <%= fa_icon "" %>
+        <p class="key-title"></p>
       </div>
     <% end %>
     <%= link_to home_url(@supplier) do %>

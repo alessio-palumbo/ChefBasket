@@ -1,10 +1,20 @@
-<p class='text-center'><%= @order.food_business.business_name %></p>
+<p class='text-center'>
+  <% if current_user.supplier %>
+    <%= @order.supplier.business_name %>
+  <% else %>
+    <%= @order.food_business.business_name %>
+  <% end %>
+</p>
 
 <p class="box-title">Order <%= @order.order_number %> - <%= @order.created_at.strftime("%m/%d/%Y") %></p>
 <hr>
 
 <div class="small d-flex justify-content-around">
-  <p>To: <%= @order.supplier.business_name %></p>
+  <% if current_user.supplier %>
+    <p>From: <%= @order.food_business.business_name %></p>
+  <% else %>
+    <p>To: <%= @order.supplier.business_name %></p>
+  <% end %>
   <p>Delivery: <%= @order.delivery_date.strftime("%m/%d/%Y") %></p>
 </div>
 
@@ -32,23 +42,25 @@
   </div>
 </div>
 
-<%= form_tag order_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: <%= number_to_currency(@order.gross_total) %></span>
-    </label>
-  </article>
+<% if current_user.user_type == 'Food Business'%>
+  <%= form_tag order_path do %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <label class="amount">
+        <span>Amount: <%= number_to_currency(@order.gross_total) %></span>
+      </label>
+    </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="<%= @amount %>"
-          data-locale="auto"></script>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="A month's subscription"
+            data-amount="<%= @amount %>"
+            data-locale="auto"></script>
+  <% end %>
 <% end %>
 
 <%= render 'menu_show' %>

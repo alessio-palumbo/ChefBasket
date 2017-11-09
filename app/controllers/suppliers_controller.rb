@@ -52,8 +52,9 @@ class SuppliersController < ApplicationController
         @supplier.food_businesses << @food_business        
       end
       redirect_to request.referrer
+      
       # respond_to do |format|
-      #     format.js {render inline: "window.location.reload();" }
+      #     format.js 
       # end
       # redirect_to food_businesss_path(food_business: @food_business) and return
 

@@ -19,7 +19,7 @@
             <%= fa_icon "minus-circle", class: 'text-danger', id: 'delbtn' %>
           <% end %>
         <% else %>
-          <%= link_to order_path(id: order.id, supplier: @supplier.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link' do %>
+          <%= link_to order_path(order, supplier_id: @supplier.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link' do %>
             <%= fa_icon "minus-circle", class: 'text-danger hidden', id: 'delbtn' %>
           <% end %>
         <% end %>        
