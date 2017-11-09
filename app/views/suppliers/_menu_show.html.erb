@@ -1,20 +1,43 @@
-<div class="menu-box">
-  <%= link_to do %>
-    <div class="menu-key">
-      <%= fa_icon "area-chart" %>
-      <p class="key-title">Stats</p>
-    </div>
-  <% end %>
-  <%= link_to edit_supplier_path(@supplier) do %>
-    <div class="menu-key middle-key">
-      <%= fa_icon "pencil" %>
-      <p class="key-title">Edit</p>
-    </div>
-  <% end %>
-  <%= link_to home_path do %>
-    <div class="menu-key">
-      <%= fa_icon "home" %>
-      <p class="key-title">Home</p>
-    </div>
-  <% end %>
-</div>
+<% if current_user.user_type == 'Food Business' %>
+  <div class="menu-box">
+    <%= link_to suppliers_path(food_business: params[:food_business]) do %>
+      <div class="menu-key">
+        <%= fa_icon "area-chart" %>
+        <p class="key-title">My Suppliers</p>
+      </div>
+    <% end %>
+    <%= link_to do %>
+      <div class="menu-key middle-key">
+        <%= fa_icon "" %>
+        <p class="key-title"></p>
+      </div>
+    <% end %>
+    <%= link_to food_business_home_path(id: params[:food_business]) do %>
+      <div class="menu-key">
+        <%= fa_icon "home" %>
+        <p class="key-title">Home</p>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="menu-box">
+    <%= link_to do %>
+      <div class="menu-key">
+        <%= fa_icon "area-chart" %>
+        <p class="key-title">Stats</p>
+      </div>
+    <% end %>
+    <%= link_to edit_supplier_path(@supplier) do %>
+      <div class="menu-key middle-key">
+        <%= fa_icon "pencil" %>
+        <p class="key-title">Edit</p>
+      </div>
+    <% end %>
+    <%= link_to home_path do %>
+      <div class="menu-key">
+        <%= fa_icon "home" %>
+        <p class="key-title">Home</p>
+      </div>
+    <% end %>
+  </div>
+<% end %>

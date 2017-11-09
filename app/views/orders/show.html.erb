@@ -27,9 +27,28 @@
   <% end %>
 
   <div class="total xs">
-    <p class="text-right"><span class="tot-title">GST: </span><%= calc_gst(@order.order_products) %><p>
-    <p class="text-right"><span class="tot-title">Total: </span><%= total(@order.order_products) %></p>
+    <p class="text-right"><span class="tot-title">GST: </span><%= number_to_currency(@order.gross_total) %><p>
+    <p class="text-right"><span class="tot-title">Total: </span><%= number_to_currency(@order.gst) %></p>
   </div>
 </div>
+
+<%= form_tag order_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+      <span>Amount: <%= number_to_currency(@order.gross_total) %></span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-amount="<%= @amount %>"
+          data-locale="auto"></script>
+<% end %>
 
 <%= render 'menu_show' %>

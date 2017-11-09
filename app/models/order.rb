@@ -13,4 +13,16 @@ class Order < ApplicationRecord
       errors.add(:delivery_date, "can't be today")
     end
   end
+
+  def net_total(order_products)
+    order_products.sum(&:subtotal)
+  end
+
+  def calc_gst(order_products)
+    (net_total(order_products) / 100 * 10)
+  end
+
+  def total(order_products)
+    (net_total(order_products) + (net_total(order_products) / 100 * 10))
+  end
 end

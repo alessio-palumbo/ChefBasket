@@ -1,7 +1,7 @@
 <p class="list-title">My Clients</p>
 <% if @my_clients && @my_clients.count > 0 %>
   <% @my_clients.each do |food_business| %>
-    <%= link_to food_business do %>
+    <%= link_to food_business_path(food_business, supplier: @supplier.id) do %>
       <div class="list-item d-flex justify-content-between">
         <p><%= food_business.business_name %></p>
         <%= form_with model: @supplier do |f| %>
@@ -22,7 +22,7 @@
 
 <p class="list-title">Food Businesses</p>
 <% @food_businesses.each do |food_business| %>
-  <%= link_to food_business do %>
+  <%= link_to food_business_path(food_business, supplier: @supplier.id) do %>
     <div class="list-item d-flex justify-content-between">
       <p><%= food_business.business_name %></p>
       <%= form_with model: @supplier do |f| %>

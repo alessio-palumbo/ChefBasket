@@ -41,6 +41,9 @@ gem 'image_processing'
 gem 'mini_magick'
 gem 'shrine'
 gem 'aws-sdk-s3', '~> 1.2.0'
+# pundit
+gem 'pundit'
+gem 'stripe'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

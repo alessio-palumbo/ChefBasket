@@ -18,7 +18,6 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @order.food_business = @food_business
   end
 
   def edit
@@ -28,15 +27,32 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.food_business = @food_business
 
+    # @amount = 500
+    
+    # customer = Stripe::Customer.create(
+    #   :email => @food_business.email,
+    #   :source  => params[:stripeToken]
+    # )
+    # charge = Stripe::Charge.create(
+    #   :customer    => customer.id, 
+    #   :amount      => @amount,
+    #   :description => @order.order_number,
+    #   :currency    => 'aud'
+    # )
+  
     respond_to do |format|
       if @order.save
         format.html { redirect_to new_order_product_path(order: @order), notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
-        format.html { render :new }
+        format.html { redirect_to orders_path(food_business: @food_business) }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+
+  # rescue Stripe::CardError => e
+  #   flash[:error] = e.message
+  #   redirect_to orders_path(food_business: @food_business)
   end
 
   def update

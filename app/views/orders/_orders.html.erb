@@ -9,7 +9,7 @@
         <p><span class="order-title">To: </span><%= order.supplier.business_name %></p>
       <% end %>
       <p><span class="order-title">Delivery Date: </span><%= order.delivery_date %></p>
-      <p><span class="order-title">Total: </span><%= total(order.order_products) %></p>
+      <p><span class="order-title">Total: </span><%= number_to_currency(order.gross_total) %></p>
       <p>
         <%= link_to class: 'link' do %>
           <%= fa_icon "print", id: 'signin' %>

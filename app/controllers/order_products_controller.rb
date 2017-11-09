@@ -23,12 +23,16 @@ class OrderProductsController < ApplicationController
 
   def create
     @order = Order.find(params[:order_id])
+    # Load all the supplier products
     @selected_products = Product.where(id: params[:product_id])
+    # Create an OrderProduct instance if a quantity has been input
     @selected_products.each_with_index do |prod, idx|
       if params[:quantity][idx] != '0'
         OrderProduct.create!(order_id: @order.id, product_id: prod.id, quantity: params[:quantity][idx])
       end
     end
+    @order.gross_total = @order.total(@order.order_products)
+    @order.gst = @order.calc_gst(@order.order_products)
 
     respond_to do |format|
       if @order.save
