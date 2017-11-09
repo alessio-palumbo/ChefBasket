@@ -9,7 +9,7 @@ The problem resulting by this are:
 - No confirmation of order received
 - No estimate on current order or data in general
 - Supplier invoice either printed out or sent by email (two different places, easy to lose)
--  
+
 
 
 ### Solution
@@ -29,22 +29,66 @@ By providing a common portal, restaurants and suppliers can simplify they way th
 - Holiday notifications/ Discounts through system
 
 ### User Restaurant
+#### My Food Businesses
+- View list of businesses owned
+- Add or delete businesses
+- Access as one of the business
 #### Home
+- Main navigation
+- Order history
+- New order
+- Suppliers
+- Profile
+- Search
+- Delivery
+#### Order history
+- Display list of past orders with main details
+- View order and perform payment
+- Print
+#### New order
+- Issue new order
+- Supplier will receive an email when order has been finalized
 #### Suppliers
 - List of my suppliers
 - Search supplier 
-#### Supplier/Orders
-- Order history (paid/unpaid/due)
-- New order
-- Message Supplier
-#### Supplier/:Order/Payment
+- Add / delete from list
+- Check supplier details
+- Message supplier
+#### Profile
+- View/Edit profile
+#### Delivery
+- View expected delivery
+#### Search
+- Search Products
+- View Products Prices
 
+### Supplier
+#### Home
+- Main navigation
+- Order history
+- My clients
+- Profile
+- Search
+- Delivery
+#### Order history
+- View new orders
+- Display list of past orders with main details
+- Print order for warehouse use
+#### My clients
+- List of food businesses
+- Search food business
+- Add / delete from list
+- Check food business details
+- Message food business
+#### Profile
+- View/Edit profile
+#### Delivery
+- View pending delivery
+#### Search
+- View Competitors Products Prices
 
-
-
-
-
-### Restaurant
+### Models
+#### Restaurant
 - details
 - check suppliers in the system
 - check supplier database
@@ -69,5 +113,7 @@ By providing a common portal, restaurants and suppliers can simplify they way th
 The first problem I had to deal with was to decide how to structure the user model since this application is serving two different user with opposite situations and needs.
 - One way was to build two different user with devise
 - Another way was to create a sigle User model with polymorphic profile that contains the unique filed needed for the user type
-- A different approach to the previous solution was to create a single User model with a polymorphic authenticable property. 
 - Single table inheritance
+In the end I decided to implement a single devise User with a user_type attribute which allows to create a child Food Business or Supplier.
+The main difference between the two is that a user_type Food Business can have a list of food businesses, while a supplier can only have one single account.
+The difficulty was to render different views and options using the same controllers and views, and connecting all the links between screens and functionalities.

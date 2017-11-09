@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
         format.html { redirect_to new_order_product_path(order: @order), notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
-        format.html { redirect_to orders_path(food_business: @food_business) }
+        format.html { redirect_to new_order_path(food_business: @food_business) }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
