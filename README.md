@@ -14,6 +14,9 @@ The problem resulting by this are:
 
 ### Solution
 By providing a common portal, restaurants and suppliers can simplify they way they do business and at the same time collect data from orders and transactions to help them make better decisions.
+
+![alt-text](app/assets/images/chefbasket.png)
+
 #### The advantages for the restaurants are: 
 - A single ordering system for all their suppliers
 - Orders cost and history for comparisons (optional weekly estimates and target)
