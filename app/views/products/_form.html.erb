@@ -11,47 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :supplier_id %>
-    <%= form.text_field :supplier_id, id: :product_supplier_id %>
-  </div>
+  <%= form.text_field :name, placeholder: 'Name', cautofocus: true, class: 'field-input' %>
 
-  <div class="field">
-    <%= form.label :order_id %>
-    <%= form.text_field :order_id, id: :product_order_id %>
-  </div>
+  <%= form.text_field :product_variety, placeholder: 'Product variety',  class: 'field-input' %>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category, id: :product_category %>
-  </div>
+  <%= form.text_field :product_code, placeholder: 'Product Code', class: 'field-input' %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :product_name %>
-  </div>
+  <%= form.select :quantifier, ['Kg', 'Each', 'Bunch', 'Grams', 'Punnet'], {include_blank: 'Select quantifier'}, {class: 'field-input select' } %>
+  
+  <%= form.text_field :price, placeholder: 'Price', class: 'field-input' %>
 
-  <div class="field">
-    <%= form.label :quantifier %>
-    <%= form.text_field :quantifier, id: :product_quantifier %>
-  </div>
+  <%= form.text_field :stock_level, placeholder: 'Stock level', class: 'field-input' %>
 
-  <div class="field">
-    <%= form.label :stock_level %>
-    <%= form.number_field :stock_level, id: :product_stock_level %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price, id: :product_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :discount %>
-    <%= form.text_field :discount, id: :product_discount %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
+  <%= form.submit 'Create Profile', class: 'button' %>
 <% end %>
