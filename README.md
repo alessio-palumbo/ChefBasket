@@ -32,7 +32,7 @@ By providing a common portal, restaurants and suppliers can simplify they way th
 ![alt-text](app/assets/images/trello.png)
 
 ### ERD
-![alt-text](app/assets/images/chefbasket-erd.png)t
+![alt-text](app/assets/images/chefbasket-erd.png)
 
 ### User Restaurant
 #### My Food Businesses
@@ -115,7 +115,7 @@ By providing a common portal, restaurants and suppliers can simplify they way th
 - give a credit to restaurant (for returned item or else)
 
 
-###Problems Encountered
+### Problems Encountered
 The first problem I had to deal with was to decide how to structure the user model since this application is serving two different user with opposite situations and needs.
 - One way was to build two different user with devise
 - Another way was to create a sigle User model with polymorphic profile that contains the unique filed needed for the user type
@@ -123,3 +123,9 @@ The first problem I had to deal with was to decide how to structure the user mod
 In the end I decided to implement a single devise User with a user_type attribute which allows to create a child Food Business or Supplier.
 The main difference between the two is that a user_type Food Business can have a list of food businesses, while a supplier can only have one single account.
 The difficulty was to render different views and options using the same controllers and views, and connecting all the links between screens and functionalities.
+
+### Future Implementations
+- Issue invoices
+- Connect to accounting application
+- Print Orders
+- Upload products database 
