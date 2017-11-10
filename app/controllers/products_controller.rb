@@ -17,11 +17,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.supplier = @supplier
+    @product.supplier = current_user.supplier
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to products_path(supplier: current_user.supplier), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }

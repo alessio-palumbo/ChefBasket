@@ -23,6 +23,7 @@
 
   <%= form.text_field :stock_level, placeholder: 'Stock level', class: 'field-input' %>
 
+  <%= hidden_field_tag :supplier, @supplier %>
   
   <%= form.submit 'Create Profile', class: 'button' %>
 <% end %>
