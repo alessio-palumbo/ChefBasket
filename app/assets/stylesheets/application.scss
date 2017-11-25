@@ -79,6 +79,7 @@ a:hover {
   top: 100vh;
   transform: translateY(-100%);
   border-top: 3px solid white;
+  z-index: 1000;
   .menu-key {
     background: $gray;
     vertical-align: top;
